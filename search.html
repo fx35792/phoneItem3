@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>欢迎您申请开借</title>
+	<meta name="viewport" content="user-scalable=no,initial-scale=1.0,maximum-scale=1.0,width=device-width">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/search.css">
+</head>
+<body>
+	<div class="login_bg clearfix">
+		<form action="">
+		<div class="login_ban clearfix">
+			<h2>欢迎您申请开借</h2>
+			<h3>请您填写真实信息，一经提交无法修改 </h3>
+			<div class="login_content">
+				<p class="clearfix br-bt">
+					<label for="username">真实姓名</label>
+					<input type="text" id="username" name="uname">
+				</p>
+				<p class="clearfix br-bt">
+					<label for="idcard">身份证号</label>
+					<input type="text" id="idcard" name="idcard" >
+				</p>
+				<p class="clearfix br-bt">
+					<label for="phone">手机号码</label>
+					<input type="text" id="phone" name="phone">
+					<input type="button" id="btn" value="获取验证码" />  
+				</p>
+				<p class="clearfix">
+					<label for="record">验证码&nbsp;&nbsp;</label>
+					<input type="text" id="record" name="record" >
+				</p>				
+			</div>
+			<div class="search_agree">
+				<input type="checkbox" checked="">
+				<a href="agreement.html">我同意《个人信用查询授权》</a>
+			</div>
+			<div class="login_submit">
+				<input type="submit" value="查询">
+			</div>
+			
+		</div>
+		</form>
+	</div>
+
+<script type="text/javascript">  
+var wait=60;  
+function time(o) {  
+        if (wait == 0) {  
+            o.removeAttribute("disabled");            
+            o.value="免费获取验证码";  
+            wait = 60;  
+        } else {  
+            o.setAttribute("disabled", true);  
+            o.value="重新发送(" + wait + ")";  
+            wait--;  
+            setTimeout(function() {  
+                time(o)  
+            },  
+            1000)  
+        }  
+    }  
+document.getElementById("btn").onclick=function(){time(this);}  
+</script>  
+</body>
+</html>
