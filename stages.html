@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>欢迎您申请开借</title>
+	<meta name="viewport" content="user-scalable=no,initial-scale=1.0,maximum-scale=1.0,width=device-width">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/search.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+</head>
+<body style="background:#f4f4f4">
+	<div class="stages_bg clearfix">
+		<img src="images/stages_bg.png" class="bg">
+		<div class="stages_money">
+			<em>您的贷款额为</em>
+			<span><i class="dk_money">8000.00</i>元</span>
+			<img src="images/modify.png" height="17" width="80" id="modify">
+		</div>
+		<div class="stages_page clearfix">
+			<h2>选择分期月数</h2>
+			<div class="stages_progress"></div>
+			<div class="stages_month">
+				<p style="left:0%">
+					<input type="radio" name="month" class="month_label" id="month0">
+					<label>0</label>
+				</p>
+				<p style="left:5.5%">
+					<input type="radio" name="month" class="month_label" id="month3">
+					<label>3</label>
+				</p>
+				<p style="left:10.5%">
+					<input type="radio" name="month" class="month_label" id="month6">
+					<label>6</label>
+				</p>
+				<p style="left:30%">
+					<input type="radio" name="month" class="month_label" id="month12">
+					<label>12</label>
+				</p>
+				<p style="float: right;right:0px;">
+					<input type="radio" name="month" class="month_label" id="month24">
+					<label>24</label>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="stages_selct clearfix">
+		<p>
+			<input type="radio" name="stages" class="label" id="stages1">
+			<label for="stages1">商家不承担服务费</label>
+		</p>
+		<p>
+			<input type="radio" name="stages" class="label" id="stages2">
+			<label for="stages2">商家承担3个月服务费</label>
+		</p>
+		<p style="display:none" class="server_six">
+			<input type="radio" name="stages" class="label" id="stages3">
+			<label for="stages3">商家承担6个月服务费</label>
+		</p>
+	</div>
+	<div class="stage_m_1 stage_m" style="display:none;">
+		<p style="margin-bottom:0">
+			您每月应还款总额为<span>2800</span>元，其中应还本金为<em>2800</em>元，应还服务费为<i>0</i>元。
+		</p>		
+	</div>
+	<div class="stage_m_2 stage_m" style="display:none;">
+		<p>
+			您前<strong>3</strong>个月每月应还款总额为<span>2800</span>元，其中应还本金为<em>2800</em>元，应还服务费为<i>0</i>元。
+		</p>	
+		<p style="margin-bottom:0">
+			您后<strong>6</strong>个月每月应还款总额为<span>2880</span>元，其中应还本金为<em>2800</em>元，应还服务费为<i>80</i>元。
+		</p>	
+	</div>
+	<div class="stages_foot">
+		<a href="" class="left">返回</a>
+		<a href="javascript:; " class="right calculator" id="calculator" >计算</a>
+	</div>
+	<div class="adjustment" style="display:none">
+		<div class="adjustment_btm"></div>
+		<div class="adjustment_cont">
+			<img src="images/close.png" height="18" width="18" id="close_img">
+			<input type="text" class="input_money" value="输入您的贷款金额" onkeyup="value=value.replace(/[^\d]/g,'') " 
+      onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" >
+			<a href="javascript:;" class="submit_money">确定</a>
+		</div>
+	</div>
+	<script type="text/javascript">
+	$(function(){
+		//弹出层-调整额度
+		$("#modify").click(function() {
+			$(".adjustment").show();
+		});
+		$("#close_img").click(function() {
+			$(".adjustment").hide();
+		});
+
+		//更改金额输入框内容
+		$(".input_money").focus(function(){
+			if($(this).val() == '输入您的贷款金额'){
+				$(this).val(" ");
+			}
+		});
+		$(".input_money").blur(function(){
+			if($(this).val() == ' '){
+				$(this).val("输入您的贷款金额");
+			}
+		});
+
+		//提交更改的金额
+		$(".submit_money").click(function() {
+			var input_money = $(".input_money").val();
+			var dk_money    = $(".dk_money").text();
+			//parseInt(input_money)
+			//alert(typeof(parseInt(dk_money)));
+			if(parseInt(input_money)>parseInt(dk_money)){
+				alert("亲，您的输入金额不能大于您的贷款额");
+				$(".input_money").val(" ");
+			}else if(input_money=="输入您的贷款金额" || input_money==" "){
+				alert("亲，您的输入金额不能为空");
+				$(".input_money").val(" ");
+			}else{
+				$(".dk_money").html(input_money);
+				$(".adjustment").hide();
+			}
+		});
+
+		//选择分期月数 对承担服务费的显隐性控制
+		$(".stages_month p").click(function() {
+			var index = $(".stages_month p");
+			if($(this).index()>1){
+				$(".server_six").show();
+			}else{
+				$(".server_six").hide();
+			}	
+		});
+		
+		//计算
+		$("#calculator").click(function() {
+			var rd_01 = $("#stages1");
+			var rd_02 = $("#stages2");
+			var rd_03 = $("#stages3");
+			if(rd_01.attr("checked")){
+				$(".stage_m_1").show();
+				$(".stage_m_2").hide();
+			}
+			if(rd_02.attr("checked")){
+				$(".stage_m_1").hide();
+				$(".stage_m_2").show();
+			}
+			if(rd_03.attr("checked")){
+				$(".stage_m_1").hide();
+				$(".stage_m_2").show();
+			}
+		});
+	});
+	</script>
+</body>
+</html>
