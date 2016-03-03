@@ -20,7 +20,6 @@ del,ins,u,s,a,a:hover{text-decoration:none;}
 body,textarea,input,button,select,keygen,legend{font:12px/1.14 Microsoft Yahei,\5b8b\4f53;color:#333;outline:0;}
 body{background:#fff;}
 a,a:hover{color:#333;}
-*{}
 .clearfix:after{content: ".";height: 0;display: block;clear: both;visibility: hidden;}
 .clearfix{*+height:1%;}
 .left{float: left;}
