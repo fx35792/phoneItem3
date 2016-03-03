@@ -26,7 +26,7 @@ input[type="radio"],input[type="button"], input[type="submit"], input[type="rese
 .agreement_all h3{font-size: 13px;color: #323232;font-weight: normal;height: 30px;line-height: 30px;}
 .agreement_all  p{font-size: 13px;line-height: 22px;}
 
-
+ 
 /**result**/
 .result_all{width:80%;margin:0 auto;}
 .result_all h2{text-align: center;font-size: 14px;color: #696969;line-height: 30px;} 
