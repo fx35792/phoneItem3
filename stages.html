@@ -126,6 +126,8 @@
 		//选择分期月数 对承担服务费的显隐性控制
 		$(".stages_month p").click(function() {
 			var index = $(".stages_month p");
+			var stages_selct = $(".stages_selct input");
+			stages_selct.removeAttr("checked");
 			if($(this).index()>1){
 				$(".server_six").show();
 			}else{
