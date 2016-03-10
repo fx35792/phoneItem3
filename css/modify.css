@@ -1,0 +1,18 @@
+/**密码修改成功**/
+.result_all{width:80%;margin:0 auto;}
+.result_all p{font-size: 14px;color: #000;line-height:35px;text-align: center;font-size: 18px;}
+.result_part1{text-align: center;}
+.result_part1 img{margin:30px 0px 0;text-align: center;}
+.result_btn a{height: 50px;line-height: 50px;width:100%;display: block;text-align: center;color: #fff;background:#f5a717;font-size: 18px;border-radius: 5px;margin:50px 0px;}
+
+/**修改密码1**/
+.modify{width:100%;margin:0 auto;}
+.modify_bg {text-align: center;}
+.modify_bg img{width:100%;}
+.modify_content{width:90%;margin:0 auto;}
+.modify-form{border:1px solid #c1bcb8;border-radius: 5px;margin:10px 0px;}
+.modify-form p{border-bottom: 1px solid #c1bcb8}
+.modify-form input{width: 94%;height: 30px;padding: 5px 0px;border: none;margin: 0px 3%;}
+.modify_btn a{height: 50px;line-height: 50px;width:45%;display: block;text-align: center;color: #fff;font-size: 18px;border-radius: 5px;margin:10px 0px;}
+.modify_btn a.sure{background:#85bc00;float: left;}
+.modify_btn a.next{background:#f5a717;float: right;}
